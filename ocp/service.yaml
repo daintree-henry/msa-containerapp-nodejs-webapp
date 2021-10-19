@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: msa-containerapp-nodejs-webapp
+  labels:
+    app: msa-containerapp-nodejs-webapp
+    app.kubernetes.io/component: msa-containerapp-nodejs-webapp
+    app.kubernetes.io/instance: msa-containerapp-nodejs-webapp
+    app.kubernetes.io/name: msa-containerapp-nodejs-webapp
+spec:
+  ports:
+    - name: 3000-tcp
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: msa-containerapp-nodejs-webapp
+    deploymentconfig: msa-containerapp-nodejs-webapp
+  type: ClusterIP

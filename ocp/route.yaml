@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: msa-containerapp-nodejs-webapp
+  labels:
+    app: msa-containerapp-nodejs-webapp
+    app.kubernetes.io/component: msa-containerapp-nodejs-webapp
+    app.kubernetes.io/instance: msa-containerapp-nodejs-webapp
+    app.kubernetes.io/name: msa-containerapp-nodejs-webapp
+spec:
+  host: msa-containerapp-nodejs-webapp-cicd-demo.apps.esmart.scl.ocp
+  to:
+    kind: Service
+    name: msa-containerapp-nodejs-webapp
+    weight: 100
+  port:
+    targetPort: 3000-tcp
+  wildcardPolicy: None

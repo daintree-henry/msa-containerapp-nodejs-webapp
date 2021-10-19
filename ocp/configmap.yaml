@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: webapp-hosts
+data:
+  EmpURL: 'msa-containerapp-java-employeeapi:8080'
+  ItemURL: 'msa-containerapp-go-itemapi:8080'
