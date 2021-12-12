@@ -1,0 +1,31 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: msa-nodejs-webapp
+  labels:
+    app: msa-nodejs-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msa-nodejs-webapp
+  template:
+    metadata:
+      labels:
+        app: msa-nodejs-webapp
+        deploymentconfig: msa-nodejs-webapp
+    spec:
+      containers:
+        - name: msa-nodejs-webapp
+          image: docker.io/dainforest/msa-containerapp-nodejs-webapp
+          env:
+            - name: EmpURL
+              valueFrom:
+                configMapKeyRef:
+                  name: webapp-hosts
+                  key: EmpURL
+            - name: ItemURL
+              valueFrom:
+                configMapKeyRef:
+                  name: webapp-hosts
+                  key: ItemURL
