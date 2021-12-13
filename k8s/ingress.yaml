@@ -12,6 +12,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: test
+                name: webapp
                 port:
-                  targetPort: 3000-tcp
+                  number: 3000

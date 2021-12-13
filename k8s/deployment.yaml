@@ -1,23 +1,25 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: msa-nodejs-webapp
+  name: webapp
   labels:
-    app: msa-nodejs-webapp
+    app: webapp
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: msa-nodejs-webapp
+      app: webapp
   template:
     metadata:
       labels:
-        app: msa-nodejs-webapp
-        deploymentconfig: msa-nodejs-webapp
+        app: webapp
     spec:
       containers:
         - name: msa-nodejs-webapp
-          image: docker.io/dainforest/msa-containerapp-nodejs-webapp
+          image: docker.io/dainforest/msa-nodejs-webapp:v1
+          ports:
+            - containerPort: 3000
+              protocol: TCP
           env:
             - name: EmpURL
               valueFrom:

@@ -1,16 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: msa-nodejs-webapp
+  name: webapp
   labels:
-    app: msa-nodejs-webapp
+    app: webapp
 spec:
   ports:
-    - name: 3000-tcp
-      protocol: TCP
+    - protocol: TCP
       port: 3000
       targetPort: 3000
   selector:
-    app: msa-nodejs-webapp
-    deploymentconfig: msa-nodejs-webapp
-  type: ClusterIP
+    app: webapp
