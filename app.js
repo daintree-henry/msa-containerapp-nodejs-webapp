@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/webapp',express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
